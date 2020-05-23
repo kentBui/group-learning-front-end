@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "roboto", sans-serif;
+}
+
+.wrapper__all {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+.wrapper__header {
+  width: 100%;
+}
+
+.wrapper__header .logo {
+  width: 100%;
+  height: 10vh;
+  background-color: #eee;
+  line-height: 10vh;
+  padding-left: 20px;
+}
+
+.wrapper__header .nav-bar {
+  width: 100%;
+  height: 8vh;
+  margin-top: 1rem;
+  background-color: #eee;
+  line-height: 8vh;
+  text-align: center;
+}
+
+.wrapper__header .banner {
+  width: 100%;
+  height: 15vh;
+  margin-top: 1rem;
+  background-color: #eee;
+  text-align: center;
+}
+
+.wrapper__main {
+  width: 100%;
+  height: 50vh;
+  margin-top: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper__main .side-bar {
+  width: 30%;
+  height: 100%;
+  background-color: #eee;
+}
+
+.wrapper__main .body-content {
+  width: calc(70% - 2rem);
+  height: 100%;
+  background-color: #eee;
+}
+
+.wrapper__footer {
+  width: 100%;
+  height: 17vh;
+  margin-top: 1rem;
+  background-color: #eee;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
