@@ -156,9 +156,10 @@ img {
 
 .wrapper__all .wrapper__main .portfolio .box .box-image {
   margin-top: 30px;
-  border: 3px solid #ebfcff;
+  border: 5px solid #ebfcff;
   width: 100%;
   height: 170px;
+  position: relative;
 }
 
 .wrapper__all .wrapper__main .portfolio .box .box-image a {
@@ -171,6 +172,41 @@ img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.wrapper__all .wrapper__main .portfolio .box .box-image .caption1 {
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  color: #eee;
+}
+
+.wrapper__all .wrapper__main .portfolio .box .box-image .caption2 {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  text-align: right;
+  color: #0e0e0e;
+}
+
+.wrapper__all .wrapper__main .portfolio .box .box-image .caption3 {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: right;
+  color: #a3d6ef;
+}
+
+.wrapper__all .wrapper__main .portfolio .box .box-image .caption1 h4,
+.wrapper__all .wrapper__main .portfolio .box .box-image .caption2 h4,
+.wrapper__all .wrapper__main .portfolio .box .box-image .caption3 h4 {
+  font-size: 1.5rem;
 }
 
 .wrapper__all .wrapper__main .portfolio .box .info {
