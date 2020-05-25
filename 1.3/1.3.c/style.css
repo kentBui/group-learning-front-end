@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@-webkit-keyframes round {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes round {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.paint {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background-color: #cff760;
+  border: 10px solid lime;
+  border-radius: 50%;
+  position: relative;
+}
+
+.paint .top {
+  width: 30px;
+  height: 30px;
+  border: 10px solid lime;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.paint .center {
+  width: 20px;
+  height: 20px;
+  background-color: lime;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.paint .line {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  -webkit-animation: round 10s linear infinite;
+          animation: round 10s linear infinite;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.paint .line .line1 {
+  width: 50%;
+  height: 5px;
+  background-color: lime;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=style.css.map */
