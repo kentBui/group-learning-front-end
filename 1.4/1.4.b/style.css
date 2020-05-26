@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.wrap__footer {
+  width: 100%;
+}
+
+.wrap__footer .content {
+  max-width: 1170px;
+  margin: auto;
+  padding: 15px;
+  background-color: lightcyan;
+}
+
+.wrap__footer .content .title a {
+  text-transform: capitalize;
+  font-size: 2rem;
+  color: #2e2e2e;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.wrap__footer .content .title a:hover {
+  color: blue;
+}
+
+.wrap__footer .content .title p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+.wrap__footer .content form {
+  width: 100%;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wrap__footer .content form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.wrap__footer .content form .name,
+.wrap__footer .content form .email {
+  width: 48%;
+}
+
+.wrap__footer .content form .subject {
+  width: 100%;
+}
+
+.wrap__footer .content form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  outline: none;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.wrap__footer .content form .comment {
+  width: 100%;
+}
+
+.wrap__footer .content form .comment textarea {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.wrap__footer .content form button {
+  width: 100px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  text-align: center;
+  background-color: blue;
+  color: #fff;
+  outline: none;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px #2e2e2e;
+          box-shadow: 1px 1px 5px #2e2e2e;
+  cursor: pointer;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.wrap__footer .content form button:hover {
+  background-color: transparent;
+  color: #2e2e2e;
+}
+
+.wrap__footer .content span {
+  color: red;
+  margin-left: 3px;
+}
+/*# sourceMappingURL=style.css.map */

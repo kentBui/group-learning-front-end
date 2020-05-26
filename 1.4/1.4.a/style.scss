@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+$clrBg: #eba102;
+$clrBtn: #2e2e2e;
+$clrtext: #fff;
+
+a,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+.wrap__footer {
+    width: 100%;
+    .content {
+        max-width: 1170px;
+        margin: auto;
+        padding: 15px;
+        background-color: $clrBg;
+
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .about,
+        .plan {
+            width: 25%;
+            padding: 0 15px;
+            .title {
+                text-transform: capitalize;
+                font-size: 2rem;
+                color: $clrtext;
+                transition: all 0.3s linear;
+                &:hover {
+                    color: blue;
+                }
+            }
+            p {
+                margin-top: 30px;
+                font-size: 1.2rem;
+                color: $clrtext;
+                line-height: 1.3;
+                text-align: justify;
+            }
+        }
+        .touch {
+            width: 50%;
+            padding: 0 15px;
+            .title {
+                text-transform: capitalize;
+                font-size: 2rem;
+                color: $clrtext;
+                transition: all 0.3s linear;
+                &:hover {
+                    color: blue;
+                }
+            }
+            form {
+                width: 100%;
+                margin-top: 30px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                input {
+                    padding: 10px;
+                    outline: none;
+                    border: none;
+                    margin-bottom: 20px;
+
+                    font-family: inherit;
+                    font-size: 1.2rem;
+                    text-transform: capitalize;
+                }
+                .name,
+                .email {
+                    width: 48%;
+                }
+                .subject {
+                    width: 100%;
+                }
+                textarea {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 20px;
+
+                    font-family: inherit;
+                    font-size: 1.2rem;
+                    text-transform: capitalize;
+                }
+                button {
+                    width: 40%;
+                    padding: 10px;
+                    font-family: inherit;
+                    font-size: 1.2rem;
+                    text-transform: capitalize;
+                    background-color: $clrBtn;
+                    color: $clrtext;
+
+                    outline: none;
+                    border: none;
+                    border-radius: 5px;
+                    box-shadow: 1px 1px 5px #2e2e2e;
+
+                    cursor: pointer;
+                    transition: all 0.3s linear;
+                    &:hover {
+                        background-color: transparent;
+                        color: $clrBtn;
+                    }
+                }
+            }
+        }
+    }
+}

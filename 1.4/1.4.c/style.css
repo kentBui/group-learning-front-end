@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: lato, sans-serif;
+}
+
+.wrap__login {
+  width: 800px;
+  margin: auto;
+  padding: 10px;
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#0e4e90), color-stop(#2c6ba4), color-stop(#4b88b7), color-stop(#6da5c8), color-stop(#92c2da), color-stop(#88c7d7), color-stop(#83cccf), color-stop(#87cfc3), color-stop(#79b889), color-stop(#879b49), color-stop(#9d7612), to(#b04410));
+  background-image: linear-gradient(to right top, #0e4e90, #2c6ba4, #4b88b7, #6da5c8, #92c2da, #88c7d7, #83cccf, #87cfc3, #79b889, #879b49, #9d7612, #b04410);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wrap__login h1 {
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.wrap__login .sign-in,
+.wrap__login .sign-up {
+  margin-top: 30px;
+  width: 45%;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.wrap__login .sign-in h1,
+.wrap__login .sign-up h1 {
+  text-transform: capitalize;
+  font-size: 2rem;
+  color: white;
+}
+
+.wrap__login .sign-in form,
+.wrap__login .sign-up form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wrap__login .sign-in form .input-group,
+.wrap__login .sign-up form .input-group {
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+
+.wrap__login .sign-in form .input-group input,
+.wrap__login .sign-up form .input-group input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid blue;
+  font-family: inherit;
+  font-size: 1.2rem;
+  background-color: transparent;
+}
+
+.wrap__login .sign-in form .input-group input::-webkit-input-placeholder,
+.wrap__login .sign-up form .input-group input::-webkit-input-placeholder {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+  letter-spacing: 0.1rem;
+}
+
+.wrap__login .sign-in form .input-group input:-ms-input-placeholder,
+.wrap__login .sign-up form .input-group input:-ms-input-placeholder {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+  letter-spacing: 0.1rem;
+}
+
+.wrap__login .sign-in form .input-group input::-ms-input-placeholder,
+.wrap__login .sign-up form .input-group input::-ms-input-placeholder {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+  letter-spacing: 0.1rem;
+}
+
+.wrap__login .sign-in form .input-group input::placeholder,
+.wrap__login .sign-up form .input-group input::placeholder {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+  letter-spacing: 0.1rem;
+}
+
+.wrap__login .sign-in form .input-group i,
+.wrap__login .sign-up form .input-group i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: white;
+}
+
+.wrap__login .sign-in form button,
+.wrap__login .sign-up form button {
+  width: 40%;
+  padding: 10px;
+  margin-top: 20px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  font-family: inherit;
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 1.2rem;
+  -webkit-box-shadow: 1px 1px 5px #0e4e90;
+          box-shadow: 1px 1px 5px #0e4e90;
+}
+
+.wrap__login .sign-in form button:hover,
+.wrap__login .sign-up form button:hover {
+  background-color: transparent;
+  color: #222;
+}
+
+.wrap__login .sign-in form .btn1 {
+  background-color: green;
+}
+
+.wrap__login .sign-in form .btn2 {
+  background-color: red;
+}
+
+.wrap__login .sign-up form button {
+  width: 100%;
+  background-color: green;
+}
+
+.wrap__login p {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
