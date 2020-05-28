@@ -14,8 +14,8 @@ $bgImg: linear-gradient(to top, #eb3f2d, #e83434, #e3283a, #df1a40, #d90646);
 $trans: all 0.3s linear;
 $boxShadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
 
-$maxMbWidth: 479px;
-$minTbWidth: 480px;
+$maxMbWidth: 575.9px;
+$minTbWidth: 576px;
 $tabletWidth: 768px;
 html {
     scroll-behavior: smooth;
@@ -83,7 +83,9 @@ img {
     font-size: 3.75rem;
     color: $clrMainDark;
     text-align: center;
-
+    @include mobile {
+        font-size: 2rem;
+    }
     span {
         @extend %configDot;
     }
@@ -106,6 +108,9 @@ img {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+
             .logo {
                 width: 200px;
                 line-height: 120px;
@@ -122,8 +127,20 @@ img {
             }
             .menu {
                 width: calc(100% - 200px);
+                @include mobile {
+                    display: none;
+                    width: 100%;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    z-index: 1010;
+                }
                 ul {
                     text-align: right;
+                    @include mobile {
+                        width: 100%;
+                        text-align: center;
+                    }
                     .item {
                         line-height: 120px;
                         display: inline-block;
@@ -135,10 +152,38 @@ img {
                         // text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 
                         transition: $trans;
+                        @include mobile {
+                            display: block;
+                            line-height: 60px;
+                            margin-left: 0;
+                            background-color: rgba(0, 0, 0, 0.7);
+                            color: $clrMainWhite;
+                            border-bottom: 1px solid $clrLight;
+                        }
                         &:hover {
                             color: $clrMainDark;
                         }
                     }
+                }
+                &.active {
+                    @include mobile {
+                        display: block;
+                    }
+                }
+            }
+            .bar {
+                line-height: 120px;
+                font-size: 2rem;
+                color: $clrMainWhite;
+                cursor: pointer;
+                display: none;
+
+                transition: $trans;
+                &:hover {
+                    color: $clrMainDark;
+                }
+                @include mobile {
+                    display: block;
                 }
             }
         }
@@ -152,6 +197,11 @@ img {
             .hero__left {
                 width: 50%;
                 margin-top: 80px;
+                @include mobile {
+                    width: 100%;
+                    text-align: center;
+                    margin-top: 0;
+                }
                 .title {
                     color: $clrMainWhite;
                     font-size: 4.5rem;
@@ -177,7 +227,9 @@ img {
                     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
 
                     transition: $trans;
-
+                    @include mobile {
+                        margin-top: 50px;
+                    }
                     &:hover {
                         transform: translateY(-3px);
                         box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
@@ -186,9 +238,18 @@ img {
             }
             .hero__right {
                 width: 50%;
+                @include mobile {
+                    width: 100%;
+                    margin-top: 50px;
+                }
                 .image {
                     width: 385px;
                     margin-left: auto;
+                    @include mobile {
+                        margin: auto;
+                        max-width: 385px;
+                        width: 100%;
+                    }
                 }
             }
         }
@@ -198,9 +259,11 @@ img {
         .main__products {
             @extend %configWidth;
             margin-top: 90px;
+            @include mobile {
+                margin-top: 50px;
+            }
             .product__item {
                 width: 100%;
-                height: 534px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -208,9 +271,14 @@ img {
 
                 .image {
                     width: 50%;
-                    height: 100%;
+                    height: 534px;
 
                     position: relative;
+                    @include mobile {
+                        width: 100%;
+                        order: 2;
+                        margin-top: 100px;
+                    }
                     .image__message {
                         width: 300px;
 
@@ -220,6 +288,12 @@ img {
                         z-index: 9;
 
                         box-shadow: $boxShadow;
+                        @include mobile {
+                            left: 0;
+
+                            max-width: 300px;
+                            width: 100%;
+                        }
                     }
                     .image__chat {
                         width: 300px;
@@ -230,13 +304,25 @@ img {
                         z-index: 10;
 
                         box-shadow: $boxShadow;
+                        @include mobile {
+                            max-width: 300px;
+                            width: 100%;
+                        }
                     }
                 }
                 .introduction {
                     width: 50%;
-
+                    @include mobile {
+                        width: 100%;
+                        text-align: center;
+                        order: 1;
+                    }
                     .title {
                         @extend %configTitle;
+                        text-align: left;
+                        @include mobile {
+                            text-align: center;
+                        }
                     }
                     .info {
                         margin-top: 40px;
@@ -248,6 +334,9 @@ img {
                 }
                 &:last-child {
                     margin-top: 125px;
+                    @include mobile {
+                        margin-top: 50px;
+                    }
                     .image {
                         order: 2;
                         .image__product {
@@ -259,6 +348,10 @@ img {
                             z-index: 12;
 
                             box-shadow: $boxShadow;
+                            @include mobile {
+                                max-width: 300px;
+                                width: 100%;
+                            }
                         }
                         .image__group {
                             width: 300px;
@@ -269,6 +362,12 @@ img {
                             z-index: 11;
 
                             box-shadow: $boxShadow;
+                            @include mobile {
+                                right: 0;
+
+                                max-width: 300px;
+                                width: 100%;
+                            }
                         }
                     }
                     .introduction {
@@ -282,10 +381,16 @@ img {
             height: 1px;
             margin-top: 185px;
             background-color: #ddd;
+            @include mobile {
+                margin-top: 85px;
+            }
         }
         .people-say {
             @extend %configWidth;
             margin-top: 100px;
+            @include mobile {
+                margin-top: 60px;
+            }
             .title {
                 @extend %configTitle;
             }
@@ -296,14 +401,24 @@ img {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-column-gap: 30px;
+                @include mobile {
+                    grid-template-columns: 1fr;
+                    margin-top: 50px;
+                }
                 .people__item {
                     width: 100%;
+                    @include mobile {
+                        margin-bottom: 50px;
+                    }
                     .item__content {
                         width: 100%;
                         padding: 30px;
                         border: 1px solid #ddd;
 
                         position: relative;
+                        @include mobile {
+                            box-shadow: $boxShadow;
+                        }
                         p {
                             font-size: 1.125rem;
                             color: $clrTextMuted;
@@ -373,6 +488,9 @@ img {
                             top: -30px;
                             border: none;
                             box-shadow: $boxShadow;
+                            @include mobile {
+                                top: 0;
+                            }
                         }
                     }
                 }
@@ -388,6 +506,10 @@ img {
             background-repeat: no-repeat;
             background-size: cover;
 
+            @include mobile {
+                margin-top: 50px;
+                height: auto;
+            }
             .banner__content {
                 @extend %configWidth;
                 height: 100%;
@@ -401,14 +523,24 @@ img {
                     height: 100%;
                     display: block;
                     padding-top: 110px;
+                    @include mobile {
+                        width: 100%;
+                        padding: 50px 0;
+                    }
                     .banner__item {
                         width: 100%;
 
                         display: flex;
                         justify-content: space-between;
+                        flex-wrap: wrap;
                         .content {
                             width: calc(100% - 100px);
                             padding-top: 10px;
+                            @include mobile {
+                                width: 100%;
+                                text-align: center;
+                                order: 2;
+                            }
                             h3 {
                                 font-size: 24px;
                                 color: $clrMainWhite;
@@ -425,6 +557,11 @@ img {
                             width: 60px;
                             font-size: 50px;
                             color: $clrMainWhite;
+                            @include mobile {
+                                order: 1;
+                                width: 100%;
+                                text-align: center;
+                            }
                         }
                         &:first-child {
                             margin-bottom: 40px;
@@ -440,33 +577,42 @@ img {
                     width: 370px;
                     position: relative;
                     top: -85px;
+                    @include mobile {
+                        position: static;
+                        margin: auto;
 
-                    .layout {
-                        width: 290px;
-                        height: 520px;
-
-                        position: absolute;
-                        top: 84px;
-                        left: 39px;
-                        background-color: rgba(0, 0, 0, 0.7);
+                        max-width: 370px;
+                        width: 100%;
                     }
-                    .play {
-                        width: 56px;
-                        height: 56px;
-                        background-image: url(./images/play.png);
-                        background-position: center;
-                        background-repeat: no-repeat;
+                    .image {
+                        width: 100%;
+                        position: relative;
+                        .layout {
+                            width: 79%;
+                            height: 74.8%;
+                            position: absolute;
+                            top: 12%;
+                            left: 10.3%;
+                            background-color: rgba(0, 0, 0, 0.7);
+                        }
+                        .play {
+                            width: 56px;
+                            height: 56px;
+                            background-image: url(./images/play.png);
+                            background-position: center;
+                            background-repeat: no-repeat;
 
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
 
-                        cursor: pointer;
-                        transition: $trans;
-                        &:hover {
-                            background-color: hotpink;
-                            border-radius: 50%;
+                            cursor: pointer;
+                            transition: $trans;
+                            &:hover {
+                                background-color: hotpink;
+                                border-radius: 50%;
+                            }
                         }
                     }
                 }
@@ -475,6 +621,9 @@ img {
         .subcribe {
             @extend %configWidth;
             margin-top: 230px;
+            @include mobile {
+                margin-top: 50px;
+            }
             .title {
                 @extend %configTitle;
             }
@@ -491,6 +640,9 @@ img {
                 margin-top: 70px;
 
                 position: relative;
+                @include mobile {
+                    width: 100%;
+                }
                 input {
                     width: 100%;
                     height: 100%;
@@ -545,10 +697,16 @@ img {
             height: 1px;
             margin-top: 150px;
             background-color: #ddd;
+            @include mobile {
+                margin-top: 80px;
+            }
         }
         .download-app {
             @extend %configWidth;
             margin-top: 100px;
+            @include mobile {
+                margin-top: 60px;
+            }
             .download__icon {
                 width: 160px;
                 height: 160px;
@@ -561,6 +719,12 @@ img {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                cursor: pointer;
+
+                @include mobile {
+                    width: 140px;
+                    height: 140px;
+                }
                 span {
                     font-size: 6rem;
                     color: $clrMainWhite;
@@ -569,6 +733,9 @@ img {
             .download__title {
                 @extend %configTitle;
                 margin-top: 60px;
+                @include mobile {
+                    margin-top: 50px;
+                }
             }
             p {
                 margin-top: 45px;
@@ -580,21 +747,42 @@ img {
                 width: 185px;
                 margin: auto;
                 margin-top: 60px;
+                position: relative;
+                .layout {
+                    width: 100%;
+                    height: 100%;
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    background-color: rgba(0, 0, 0, 0.2);
+                }
             }
         }
     }
     .wrap__footer {
         width: 100%;
-        height: 100px;
         .nav-bar {
             padding: 0 50px;
 
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            @include mobile {
+                padding: 0 15px;
+            }
             .menu {
                 width: calc(100% - 200px);
+                @include mobile {
+                    width: 100%;
+                }
                 ul {
+                    @include mobile {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                    }
                     .item {
                         line-height: 100px;
                         display: inline-block;
@@ -606,6 +794,10 @@ img {
                         // text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 
                         transition: $trans;
+                        @include mobile {
+                            margin: 0;
+                            text-align: center;
+                        }
                         &:hover {
                             color: $clrMainBrown;
                         }
@@ -626,6 +818,10 @@ img {
                 display: flex;
                 justify-content: space-between;
                 position: relative;
+                @include mobile {
+                    margin: auto;
+                    margin-bottom: 50px;
+                }
                 .dropdown {
                     cursor: pointer;
                     &:hover {
@@ -662,5 +858,29 @@ img {
     }
 }
 .btn2top {
-    display: none;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: blueviolet;
+
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 1011;
+
+    line-height: 50px;
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+
+    opacity: 1;
+    visibility: inherit;
+    transition: $trans;
+    &.inactive {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
