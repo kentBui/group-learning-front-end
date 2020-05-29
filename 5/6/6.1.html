@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.1</title>
+    <style>
+        .content {
+            width: 80vw;
+            height: 50vh;
+            margin: auto;
+            margin-top: 50px;
+
+            background-color: royalblue;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info {
+            text-transform: capitalize;
+            font-size: 2rem;
+            visibility: inherit;
+            opacity: 1;
+            transition: all 0.3s linear;
+        }
+
+        .info.disabled {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .choose {
+            width: 80%;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            width: 10vw;
+            padding: 10px;
+            outline: none;
+            border: none;
+
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+
+            cursor: pointer;
+            transition: all 0.3s linear;
+
+
+            background-color: lightgreen;
+            font-family: inherit;
+            font-size: 1rem;
+            color: black;
+        }
+
+        button:focus {
+            border: none;
+            outline: none;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+        }
+
+        .modal {
+            width: 80%;
+            height: 80%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: all 0.3s linear;
+        }
+
+        .modal.activemodal {
+            top: 50%;
+        }
+
+        .modal input {
+            width: 80%;
+            padding: 15px;
+
+            font-family: inherit;
+            font-size: 1rem;
+
+            border: none;
+            outline: none;
+
+            border-radius: 10px;
+        }
+
+        .modal span {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+
+            color: white;
+            font-size: 1rem;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+
+            background-color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <p class="info">
+            Nội dung ban đầu của thẻ paragraph
+        </p>
+        <div class="choose">
+            <button id="show">Show data</button>
+            <button id="hide">Hide data</button>
+            <button id="show-hide">Show/Hide data</button>
+            <button id="change">Change data</button>
+        </div>
+        <div class="modal">
+            <input id="change-info" type="text" placeholder="Nội dung cần thay đổi">
+            <button id="update">Update data</button>
+            <span>X</span>
+        </div>
+    </div>
+    <script>
+        let show = document.getElementById('show');
+        let hide = document.getElementById('hide');
+        let showHide = document.getElementById('show-hide');
+        let change = document.getElementById('change');
+        let info = document.querySelector('.info');
+
+        let modal = document.querySelector('.modal');
+        let input = document.getElementById('change-info');
+        let update = document.getElementById('update');
+        let close = document.querySelector('.modal span');
+        show.addEventListener('click', () => {
+            info.classList.remove('disabled');
+        })
+        hide.addEventListener('click', () => {
+            info.classList.add('disabled');
+        })
+        showHide.addEventListener('click', () => {
+            info.classList.toggle('disabled');
+        })
+        change.addEventListener('click', () => {
+            modal.classList.add('activemodal');
+        })
+        close.addEventListener('click', () => {
+            modal.classList.remove('activemodal');
+        })
+        update.addEventListener('click', () => {
+            let content = input.value;
+            if (content == '') {
+                content = "Please write something!";
+            }
+            info.innerHTML = content;
+            input.value = "";
+            modal.classList.remove('activemodal');
+            info.classList.remove('disabled');
+        })
+    </script>
+</body>
+
+</html>
