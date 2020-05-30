@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.11</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            margin-top: 50px;
+
+            background-color: #ddd;
+            text-align: center;
+        }
+
+        input {
+            width: 50px;
+            padding: 10px;
+        }
+
+        button {
+            width: 60px;
+            padding: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 22px;
+        }
+
+        .disabled {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>Phương trình bậc nhất 1 ẩn ax + b = 0</h2>
+        <hr>
+        <input type="text" class="num1">
+        <span class="param1">x + </span>
+        <input type="text" class="num2">
+        <span class="param2"></span>
+        <input type="text " class="num3 disabled">
+        <span class="param3 disabled"></span>
+        <span> = 0 </span>
+        <hr>
+        <label>
+            <input type="radio" name="phuongtrinh" class="check-item" data-type="1" checked>
+            Phương trình bậc nhất
+        </label>
+        <label>
+            <input type="radio" name="phuongtrinh" class="check-item" data-type="2">
+            Phương trình bậc hai
+        </label>
+        <hr>
+        <button class="cal">Cal</button>
+        <div class="nghiem">
+            <p>Nghiệm của phương trình là: x = </p>
+            <p class="equal"></p>
+        </div>
+    </div>
+    <script>
+        let title = document.getElementsByTagName('h2')[0];
+        let equal = document.querySelector('.equal');
+
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+        let num3 = document.querySelector('.num3');
+
+        let param1 = document.querySelector('.param1');
+        let param2 = document.querySelector('.param2');
+        let param3 = document.querySelector('.param3');
+
+        let checkItems = Array.from(document.querySelectorAll('.check-item'));
+
+        let cal = document.querySelector('.cal');
+
+        // validate str
+        function validate(str) {
+            const regexNum = /^-?\d+$/;
+            if (!regexNum.test(str)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        // kiem tra loai phuong trinh và show
+        function showEquation(type) {
+            switch (type) {
+                case "1":
+                    param1.innerHTML = "x + ";
+                    param2.innerHTML = "";
+
+                    num3.classList.add('disabled');
+                    param3.classList.add('disabled');
+                    break;
+                case "2":
+                    title.innerHTML = "Phương trình bậc hai 1 ẩn ax^2 + bx + c = 0"
+                    param1.innerHTML = "x^2 + ";
+                    param2.innerHTML = "x + ";
+
+                    num3.classList.remove('disabled');
+                    param3.classList.remove('disabled');
+                    break;
+
+            }
+        }
+
+        for (let i = 0; i < checkItems.length; i++) {
+            checkItems[i].addEventListener('chage')
+        }
+
+
+
+        // tinh toan va hien thi
+        function calculation(a, b, c, type) {
+            if (validate(a) === false) {
+                equal.innerHTML = "Please input one number no 1";
+                num1.value = "";
+            }
+            if (validate(b) === false) {
+                equal.innerHTML = "Please input one number no 2";
+                num2.value = "";
+            }
+            if (validate(a) && validate(b)) {
+                switch (type) {
+                    case '-':
+                        equal.innerHTML = parseInt(a) - parseInt(b) - parseInt(c);
+                        break;
+                    case '*':
+                        equal.innerHTML = parseInt(a) * parseInt(b) * parseInt(c);
+                        break;
+                    case '1':
+                        if (a == "0" || a == "") {
+                            equal.innerHTML = "Check number no 1 non zero or space";
+                            num3.value = "";
+                            break;
+                        } else {
+                            equal.innerHTML = (- parseInt(b)) / parseInt(a);
+                        }
+                }
+            }
+        }
+
+        cal.addEventListener('click', () => {
+            let a = num1.value;
+            let b = num2.value;
+            let c = num3.value;
+
+        })
+
+    </script>
+</body>
+
+</html>
