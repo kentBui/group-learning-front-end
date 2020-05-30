@@ -58,7 +58,7 @@
         <hr>
         <button class="cal">Cal</button>
         <div class="nghiem">
-            <p>Nghiệm của phương trình là: x = </p>
+            <p>Nghiệm của phương trình là: </p>
             <p class="equal"></p>
         </div>
     </div>
@@ -98,6 +98,9 @@
 
                     num3.classList.add('disabled');
                     param3.classList.add('disabled');
+                    num1.value = "";
+                    num2.value = "";
+                    num3.value = "";
                     break;
                 case "2":
                     title.innerHTML = "Phương trình bậc hai 1 ẩn ax^2 + bx + c = 0"
@@ -106,19 +109,26 @@
 
                     num3.classList.remove('disabled');
                     param3.classList.remove('disabled');
+                    num1.value = "";
+                    num2.value = "";
+                    num3.value = "";
                     break;
 
             }
         }
 
         for (let i = 0; i < checkItems.length; i++) {
-            checkItems[i].addEventListener('chage')
+            checkItems[i].addEventListener('change', () => {
+                let type = checkItems[i].getAttribute('data-type');
+                console.log(type);
+                showEquation(type)
+            })
         }
 
 
 
         // tinh toan va hien thi
-        function calculation(a, b, c, type) {
+        function equation1(a, b) {
             if (validate(a) === false) {
                 equal.innerHTML = "Please input one number no 1";
                 num1.value = "";
@@ -128,21 +138,56 @@
                 num2.value = "";
             }
             if (validate(a) && validate(b)) {
-                switch (type) {
-                    case '-':
-                        equal.innerHTML = parseInt(a) - parseInt(b) - parseInt(c);
-                        break;
-                    case '*':
-                        equal.innerHTML = parseInt(a) * parseInt(b) * parseInt(c);
-                        break;
-                    case '1':
-                        if (a == "0" || a == "") {
-                            equal.innerHTML = "Check number no 1 non zero or space";
-                            num3.value = "";
-                            break;
-                        } else {
-                            equal.innerHTML = (- parseInt(b)) / parseInt(a);
-                        }
+                if (a == "0") {
+                    equal.innerHTML = "Check number no 1 non zero or space";
+                    num1.value = "";
+                } else {
+                    equal.innerHTML = (- parseInt(b)) / parseInt(a);
+
+                }
+            }
+        }
+
+        function equation2(a, b, c) {
+            if (validate(a) === false) {
+                equal.innerHTML = "Please input one number no 1";
+                num1.value = "";
+            }
+            if (validate(b) === false) {
+                equal.innerHTML = "Please input one number no 2";
+                num2.value = "";
+            }
+            if (validate(c) === false) {
+                equal.innerHTML = "Please input one number no 3";
+                num2.value = "";
+            }
+            if (validate(a) && validate(b) && validate(c)) {
+                if (a == "0") {
+                    if (b == "0") {
+                        equal.innerHTML = "Check number no 1,2 non zero or space";
+                        num1.value = "";
+                        num2.value = "";
+                    }
+                    else {
+                        equal.innerHTML = (- parseInt(c)) / parseInt(b);
+
+                    }
+                } else {
+                    let delta = Math.pow(parseInt(b), 2) - 4 * parseInt(a) * parseInt(c);
+                    if (delta < 0) {
+                        equal.innerHTML = "Phương trình vố nghiệm";
+
+                    }
+                    else if (delta == 0) {
+                        equal.innerHTML = " x1 = x2 = " + (-parseInt(b) / 2 / parseInt(a));
+
+                    }
+                    else if (delta > 0) {
+                        let x1 = (-parseInt(b) + Math.sqrt(delta)) / 2 / parseInt(a);
+                        let x2 = (-parseInt(b) - Math.sqrt(delta)) / 2 / parseInt(a);
+                        equal.innerHTML = ` x1 = ${x1}, x2 = ${x2} `;
+
+                    }
                 }
             }
         }
@@ -151,7 +196,20 @@
             let a = num1.value;
             let b = num2.value;
             let c = num3.value;
+            console.log(checkItems);
+            let type;
+            for (let i = 0; i < checkItems.length; i++) {
+                if (checkItems[i].checked) {
+                    type = checkItems[i].getAttribute('data-type');
+                }
+            }
 
+            if (type === "1") {
+                equation1(a, b);
+            }
+            else if (type === "2") {
+                equation2(a, b, c);
+            }
         })
 
     </script>
