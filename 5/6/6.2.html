@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            color: blueviolet;
+        }
+
+        .main {
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+            background-color: rgb(240, 240, 250);
+            border: 0.5px solid gray;
+            border-collapse: collapse;
+            font-size: 1.1rem;
+        }
+
+        th,
+        td {
+            border: 0.5px solid gray;
+            height: 50px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        th:nth-child(1),
+        th:nth-child(2),
+        th:nth-child(5) {
+            width: 15%;
+        }
+
+        th:nth-child(4),
+        th:nth-child(7),
+        th:nth-child(6) {
+            width: 10%;
+        }
+
+        img {
+            width: 80%;
+            margin: auto;
+        }
+
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+
+            line-height: 30px;
+            text-align: center;
+
+            cursor: pointer;
+            background-color: greenyellow;
+            user-select: none;
+        }
+
+        .col5 input {
+            width: 30%;
+            padding: 5px 0;
+        }
+
+        .notify {
+            width: 200px;
+            height: 80px;
+            padding: 10px;
+
+            background-color: hotpink;
+            color: white;
+            font-size: 1.1rem;
+
+            position: fixed;
+            bottom: 10px;
+            right: -220px;
+            transition: all 0.4s ease;
+
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .notify.active {
+            right: 10px;
+            opacity: 1;
+            visibility: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>list item your choice</h1>
+    <table class="main">
+        <tr>
+            <th>Image</th>
+            <th>Name </th>
+            <th>Id of product</th>
+            <th>Đơn giá</th>
+            <th>số lượng</th>
+            <th>thành tiền</th>
+            <th>Remove</th>
+        </tr>
+        <tr class="row">
+            <td>
+                <img src="https://i.picsum.photos/id/765/200/150.jpg" alt="">
+            </td>
+            <td>name of product</td>
+            <td>id of product</td>
+            <td class="price">40</td>
+            <td class="col5">
+                <span class="decre">-</span>
+                <input type="number" value="1" class="quality" min="1">
+                <span class="incre">+</span>
+            </td>
+            <td class="total-price">
+                40
+
+            </td>
+            <td><span class="remove">X</span></td>
+        </tr>
+        <tr class="row">
+            <td>
+                <img src="https://i.picsum.photos/id/12/200/150.jpg" alt="">
+            </td>
+            <td>name of product</td>
+            <td>id of product</td>
+            <td class="price">750</td>
+            <td class="col5">
+                <span class="decre">-</span>
+                <input type="number" value="1" class="quality" min="1">
+                <span class="incre">+</span>
+            </td>
+            <td class="total-price">
+                750
+
+            </td>
+            <td><span class="remove">X</span></td>
+        </tr>
+        <tr class="row">
+            <td>
+                <img src="https://i.picsum.photos/id/50/200/150.jpg" alt="">
+            </td>
+            <td>name of product</td>
+            <td>id of product</td>
+            <td class="price">350</td>
+            <td class="col5">
+                <span class="decre">-</span>
+                <input type="number" value="1" class="quality" min="1">
+                <span class="incre">+</span>
+            </td>
+            <td class="total-price">
+                350
+
+            </td>
+            <td><span class="remove">X</span></td>
+        </tr>
+        <tr>
+            <td colspan="5">Total</td>
+            <td colspan="2" class="total"></td>
+        </tr>
+    </table>
+    <div class="notify">
+        <p>Số lượng sản phẩm cần mua tối thiểu là 1</p>
+    </div>
+    <script>
+        let prices = document.querySelectorAll('.price');
+        let totalPrices = document.querySelectorAll('.total-price');
+
+        let incres = document.querySelectorAll('.incre');
+        let decres = document.querySelectorAll('.decre');
+
+        let inputs = document.querySelectorAll('.quality');
+
+        let notify = document.querySelector('.notify');
+
+        let trs = document.querySelectorAll('.row');
+        let removes = document.querySelectorAll('.remove');
+
+        let total = document.querySelector('.total');
+
+        function increment(num, index) {
+            num += 1;
+            inputs[index].value = num;
+            return num;
+        }
+        function decrement(num, index) {
+            if (num <= 1) {
+                notify.classList.add('active');
+                setTimeout(() => {
+                    notify.classList.remove('active');
+                }, 2000);
+                return 1;
+            }
+            else {
+                --num;
+                inputs[index].value = num;
+                return num;
+            }
+
+        }
+        function countPrice(num, index) {
+            totalPrices[index].innerHTML = parseInt(prices[index].innerHTML) * num;
+        }
+
+        for (let i = 0; i < prices.length; i++) {
+            inputs[i].addEventListener('change', () => {
+                let number = parseInt(inputs[i].value);
+                countPrice(number, i);
+                totalAll();
+            })
+
+            incres[i].addEventListener('click', () => {
+                let number = parseInt(inputs[i].value);
+                number = increment(number, i);
+                countPrice(number, i);
+                totalAll();
+            });
+
+            decres[i].addEventListener('click', () => {
+                let number = parseInt(inputs[i].value);
+                number = decrement(number, i);
+                countPrice(number, i);
+                totalAll();
+            });
+        }
+
+        for (let i = 0; i < removes.length; i++) {
+            removes[i].addEventListener('click', () => {
+                trs[i].remove();
+                inputs[i].value = 0;
+                totalPrices[i].innerHTML = 0;
+                totalAll();
+            })
+        }
+        totalAll();
+        function totalAll() {
+            let sum = 0;
+            for (let i = 0; i < totalPrices.length; i++) {
+                sum += parseInt(totalPrices[i].innerHTML);
+            }
+            total.innerHTML = sum;
+        }
+
+    </script>
+</body>
+
+</html>

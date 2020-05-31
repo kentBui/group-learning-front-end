@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.9</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: lightgrey;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border: 0.5px solid gray;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 0.5px solid gray;
+            text-align: center;
+            height: 50px;
+        }
+
+        td:not(:first-child) {
+            width: 50px;
+        }
+
+        input {
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+
+            background-color: palegoldenrod;
+            outline: none;
+            border: none;
+            padding: 5px;
+            font-family: inherit;
+            cursor: pointer;
+
+            color: #222;
+            font-size: 1.5rem;
+        }
+
+        .equal {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <table>
+            <tr>
+                <td colspan="3" class="equal">0</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="num1" value="0">
+                </td>
+                <td>
+                    <button class="plus">+</button>
+                </td>
+                <td>
+                    <button class="sub">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="num2" value="0">
+                </td>
+                <td>
+                    <button class="add">*</button>
+                </td>
+                <td>
+                    <button class="div">/</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button class="clear">Clear</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let add = document.querySelector('.add');
+        let div = document.querySelector('.div');
+        let plus = document.querySelector('.plus');
+        let sub = document.querySelector('.sub');
+
+        let equal = document.querySelector('.equal');
+
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+
+        let clear = document.querySelector('.clear');
+
+        function validate(str) {
+            const regexNum = /^-?[0-9]+$/;
+            if (!regexNum.test(str)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        plus.addEventListener('click', () => {
+            let a = num1.value;
+            let b = num2.value;
+            if (validate(a) && validate(b)) {
+                equal.innerHTML = parseInt(a) + parseInt(b);
+            }
+            else if (validate(a) === false) {
+                equal.innerHTML = "Please input one number";
+                num1.value = "";
+            }
+            else if (validate(b) === false) {
+                equal.innerHTML = "Please input one number";
+                num2.value = "";
+            }
+        })
+
+        sub.addEventListener('click', () => {
+            let a = num1.value;
+            let b = num2.value;
+            if (validate(a) && validate(b)) {
+                equal.innerHTML = parseInt(a) - parseInt(b);
+            }
+            else if (validate(a) === false) {
+                equal.innerHTML = "Please input one number";
+                num1.value = "";
+            }
+            else if (validate(b) === false) {
+                equal.innerHTML = "Please input one number";
+                num2.value = "";
+            }
+        })
+
+        add.addEventListener('click', () => {
+            let a = num1.value;
+            let b = num2.value;
+            if (validate(a) && validate(b)) {
+                equal.innerHTML = parseInt(a) * parseInt(b);
+            }
+            else if (validate(a) === false) {
+                equal.innerHTML = "Please input one number";
+                num1.value = "";
+            }
+            else if (validate(b) === false) {
+                equal.innerHTML = "Please input one number";
+                num2.value = "";
+            }
+        })
+
+        div.addEventListener('click', () => {
+            let a = num1.value;
+            let b = num2.value;
+            console.log(b);
+            if (b == "0" || b == "") {
+                equal.innerHTML = "Please input one number non zero";
+                num2.value = "";
+                return;
+            }
+
+            if (validate(a) === false) {
+                equal.innerHTML = "Please input one number";
+                num1.value = "";
+            }
+            if (validate(b) === false) {
+                equal.innerHTML = "Please input one number";
+                num2.value = "";
+            }
+            if (validate(a) && validate(b)) {
+                equal.innerHTML = parseInt(a) / parseInt(b);
+            }
+        })
+
+        clear.addEventListener('click', () => {
+            equal.innerHTML = 0;
+            num1.value = 0;
+            num2.value = 0;
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.5.bạn</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt('Mòi bạn nhập vào Họ Và Tên:')
+        if (str.length < 1 || !str) {
+            document.write('Mời bạn nhập lại đúng chuỗi');
+        }
+        else {
+            let tempArr = str.split(' ');
+            let newArr = [];
+            for (let i = 0; i < tempArr.length; i++) {
+                newArr.push(tempArr[i].replace(tempArr[i].charAt(0), tempArr[i].charAt(0).toUpperCase()));
+            }
+            let firstItem = newArr[0];
+            newArr.splice(0, 1, newArr[newArr.length - 1]);
+            newArr.splice((newArr.length - 1), 1, firstItem);
+            console.log(tempArr, newArr);
+            let newStr = newArr.join(' ');
+
+            document.write('Họ Và Tên mới được tạo: ' + newStr);
+        }
+    </script>
+</body>
+
+</html>

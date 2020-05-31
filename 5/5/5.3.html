@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.3</title>
+</head>
+
+<body>
+    <script>
+        let num = prompt('Mời Bạn Nhập Vào một số từ 10 - 99');
+
+        let originNum = Math.floor(Math.random() * 99 + 10);
+        console.log(originNum);
+
+        num = parseInt(num);
+        console.log(num);
+        if (!num) {
+            document.write('Mời bạn nhập lại đúng số')
+        }
+        else if (num < 10 || num > 99) {
+            document.write('Mời bạn nhập lại đúng số')
+        }
+        else {
+            if (num === originNum) {
+                document.write('Chúc mừng bạn – Bạn đã đoán đúng số máy tự sinh ra')
+            }
+            else {
+                document.write('Rất tiếc – Chúc bạn may mắn lần sau')
+            }
+        }
+    </script>
+</body>
+
+</html>

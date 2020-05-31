@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.5.a</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt('Mòi bạn nhập vào một chuỗi bất kỳ:')
+        if (str.length < 1) {
+            document.write('Mời bạn nhập lại đúng chuỗi');
+        }
+        else {
+            let firstLetter = str[0];
+            let newStr = firstLetter.concat(str);
+            document.write("Chuỗi mới được tạo là: " + newStr);
+        }
+    </script>
+</body>
+
+</html>

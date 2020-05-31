@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.7</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt('Mòi bạn nhập vào một mảng các số nguyên bất kỳ, mỗi số cách nhau bởi dấu "," :')
+        const minNum = parseInt(prompt('Mời bạn nhập số nhỏ:'));
+        const maxNum = parseInt(prompt('Mời bạn nhập số lớn:'));
+
+        let evenArr = [];
+        let sumEven = 0;
+        let nonEvenArr = [];
+        let sumNonEven = 0;
+        // func kiem tra và chuyển đổi mảng
+        function transfer(str) {
+            let arr = str.split(',');
+            let newArr = [];
+
+            document.write("<br> Các số trong mảng ban đầu: <br>");
+            if (arr.length < 2) {
+                document.write('Mời bạn nhập lại đúng mảng số nguyên');
+            }
+            else {
+                for (let i = 0; i < arr.length; i++) {
+                    if (!parseInt(arr[i])) {
+                        document.write('Mời bạn nhập lại đúng mảng số nguyên 1');
+                    } else {
+                        newArr.push(parseInt(arr[i]));
+                        document.write(arr[i] + ",");
+                    }
+                }
+            }
+            return newArr;
+        }
+        // func trả về mảng số chẵn
+        function evenNum(arr) {
+            let newArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+        // func trả về mảng số lẻ
+        function nonEvenNum(arr) {
+            let newArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 != 0) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+        // func in ra số chẵn và tổng
+        function even(arr) {
+            document.write("<br> Các số chia hết cho 2: <br>");
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    document.write(arr[i] + " ,");
+                    sum += arr[i];
+                }
+            }
+            document.write("<br> Tổng các số chia hết cho 2: <strong> " + sum + "</strong>");
+        }
+        // func in ra số lẻ và tổng
+        function nonEven(arr) {
+            document.write("<br> Các số không chia hết cho 2: <br>");
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 !== 0) {
+                    document.write(arr[i] + " ,");
+                    sum += arr[i];
+                }
+            }
+            document.write("<br> Tổng các số không chia hết cho 2: <strong> " + sum + "</strong>");
+        }
+        // func check các phẩn tử trong mảng nằm trong khoảng a, b;
+        function check(a, b, arr) {
+            document.write("<br> Các số nằm trong khoảng a, b: <br>");
+            let newArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] >= a && arr[i] <= b) {
+                    document.write(arr[i] + " ,");
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+        // func sort các số trong mảng
+        function sortArr(arr) {
+            return arr.sort((a, b) => {
+                return a - b;
+            })
+        }
+
+        let arr = transfer(str);
+        document.write("<br> số min: " + minNum);
+        document.write("<br> số max: " + maxNum);
+        even(arr);
+        nonEven(arr);
+        check(minNum, maxNum, arr);
+        console.log(arr);
+        let evenArr1 = sortArr(evenNum(arr));
+        let nonEvenArr1 = sortArr(nonEvenNum(arr));
+        console.log(evenArr1, nonEvenArr1);
+
+        // 1,3,2,6,3,7,1,9,10,4,6
+        even(evenArr1);
+        nonEven(nonEvenArr1);
+    </script>
+</body>
+
+</html>

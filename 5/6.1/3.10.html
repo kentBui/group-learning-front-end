@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.10</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: lightgrey;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border: 0.5px solid gray;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 0.5px solid gray;
+            text-align: center;
+            height: 50px;
+        }
+
+        td:not(:first-child) {
+            width: 70px;
+        }
+
+        input {
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+
+            background-color: palegoldenrod;
+            outline: none;
+            border: none;
+            padding: 5px;
+            font-family: inherit;
+            cursor: pointer;
+
+            color: #222;
+            font-size: 1.5rem;
+        }
+
+        .equal {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <table>
+            <tr>
+                <td colspan="3" class="equal">0</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="num1" value="0">
+                </td>
+                <td>
+                    <label>
+                        <input type="radio" name="cal" class="plus" data-type="+" checked>Plus
+                    </label>
+                </td>
+                <td>
+                    <label>
+                        <input type="radio" name="cal" class="sub" data-type="-">Sub
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="num2" value="0">
+                </td>
+                <td>
+                    <label>
+                        <input type="radio" name="cal" class="add" data-type="*">Add
+                    </label>
+                </td>
+                <td>
+                    <label>
+                        <input type="radio" name="cal" class="div" data-type="/">Div
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="num3" value="0">
+                </td>
+                <td colspan="2">
+                    <button class="tinh">=</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+
+        let equal = document.querySelector('.equal');
+
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+        let num3 = document.querySelector('.num3');
+
+        let tinh = document.querySelector('.tinh');
+        // lay cac input phep tinh
+        let input = Array.from(document.getElementsByTagName('input'));
+
+        let arrInput = input.filter(item => item.type === "radio");
+
+        // validate str
+        function validate(str) {
+            const regexNum = /^-?\d+$/;
+            if (!regexNum.test(str)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        // tinh toan va hien thi
+        function calculation(a, b, c, operator) {
+            if (validate(a) === false) {
+                equal.innerHTML = "Please input one number no 1";
+                num1.value = "";
+            }
+            if (validate(b) === false) {
+                equal.innerHTML = "Please input one number no 2";
+                num2.value = "";
+            }
+            if (validate(c) === false) {
+                equal.innerHTML = "Please input one number no 3";
+                num3.value = "";
+            }
+            if (validate(a) && validate(b) && validate(c)) {
+                switch (operator) {
+                    case '+':
+                        equal.innerHTML = parseInt(a) + parseInt(b) + parseInt(c);
+                        break;
+                    case '-':
+                        equal.innerHTML = parseInt(a) - parseInt(b) - parseInt(c);
+                        break;
+                    case '*':
+                        equal.innerHTML = parseInt(a) * parseInt(b) * parseInt(c);
+                        break;
+                    case '/':
+                        if (c == "0" || c == "") {
+                            equal.innerHTML = "Check number no 3 non zero or space";
+                            num3.value = "";
+                            break;
+                        } else {
+                            equal.innerHTML = (parseInt(a) + parseInt(b)) / parseInt(c);
+                        }
+                }
+            }
+        }
+
+        tinh.addEventListener('click', () => {
+            let a = num1.value;
+            let b = num2.value;
+            let c = num3.value;
+            for (let i = 0; i < arrInput.length; i++) {
+                if (arrInput[i].checked) {
+                    let operator = arrInput[i].getAttribute('data-type');
+                    calculation(a, b, c, operator);
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

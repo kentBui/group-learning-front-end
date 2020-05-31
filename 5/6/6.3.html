@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.3</title>
+    <style>
+        .main {
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+            background-color: rgb(240, 240, 250);
+            border: 0.5px solid gray;
+            border-collapse: collapse;
+            font-size: 1.1rem;
+        }
+
+        th,
+        td {
+            border: 0.5px solid gray;
+            height: 50px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="main">
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+        </tr>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                2
+            </td>
+            <td>
+                3
+            </td>
+            <td>
+                4
+            </td>
+            <td>
+                5
+            </td>
+        </tr>
+    </table>
+    <button id="add-data">Add data</button>
+    <script>
+        let table = document.querySelector('.main');
+        let addData = document.getElementById('add-data');
+        let data = ['item1', 'item2', 'item3', 'item4', 'item5']
+
+        let content = '';
+        for (let i = 0; i < data.length; i++) {
+            content += `<td>${data[i]}</td>`;
+        }
+
+        let tr = document.createElement('tr');
+        tr.innerHTML = content;
+        addData.addEventListener('click', () => {
+
+            table.appendChild(tr);
+        })
+    </script>
+</body>
+
+</html>
